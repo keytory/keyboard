@@ -1,3 +1,6 @@
 spring:
   application:
     name: keyboard-service
+
+  profiles:
+    active: dev
