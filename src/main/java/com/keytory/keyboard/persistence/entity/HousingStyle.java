@@ -1,21 +1,30 @@
 package com.keytory.keyboard.persistence.entity;
 
+import java.util.HashMap;
+import java.util.Map;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
-import lombok.Data;
+public enum HousingStyle {
+    ROUNDED("둥근"),
+    ANGULAR("각진");
 
-@Entity
-@Data
-@Table(name = "housing_style")
-public class HousingStyle {
+    private final String description;
+    private static final Map<String, HousingStyle> CACHE = new HashMap<>();
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer housingStyleId;
+    static {
+        for (HousingStyle style : values()) {
+            CACHE.put(style.description, style);
+        }
+    }
 
-    @NotBlank
-    @Size(min = 1, max = 10)
-    private String name;
+    HousingStyle(String description) {
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public static HousingStyle fromDescription(String description) {
+        return CACHE.get(description);
+    }
 }

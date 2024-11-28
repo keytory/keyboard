@@ -1,20 +1,31 @@
 package com.keytory.keyboard.persistence.entity;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
-import lombok.Data;
+import java.util.HashMap;
+import java.util.Map;
 
-@Entity
-@Data
-@Table(name = "keycap_style")
-public class KeycapStyle {
+public enum KeycapStyle {
+    CHERRY("체리"),
+    OEM("OEM"),
+    MG("MG");
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer keycapStyleId;
+    private final String description;
+    private static final Map<String, KeycapStyle> CACHE = new HashMap<>();
 
-    @NotBlank
-    @Size(min = 1, max = 10)
-    private String name;
+    static {
+        for (KeycapStyle style : values()) {
+            CACHE.put(style.description, style);
+        }
+    }
+
+    KeycapStyle(String description) {
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public static KeycapStyle fromDescription(String description) {
+        return CACHE.get(description);
+    }
 }
