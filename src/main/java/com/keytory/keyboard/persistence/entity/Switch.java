@@ -20,7 +20,7 @@ public class Switch {
     private Company company;
 
     @ManyToOne
-    @JoinColumn(name = "Key")
+    @JoinColumn(name = "switchType_Id")
     private SwitchType switchType;
 
     @NotBlank
@@ -30,6 +30,4 @@ public class Switch {
     @Size(max = 255)
     private String sound;
 
-    @Size(max = 255)
-    private String actuationForce;
 }

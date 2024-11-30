@@ -2,7 +2,12 @@ package com.keytory.keyboard.common.exception;
 
 public enum ErrorCode {
 
-    INVALID_REQUEST_ARGUMENT("잘못된 요청입니다.");
+    INVALID_REQUEST_ARGUMENT("잘못된 요청입니다."),
+    NOT_FOUND_KEYTORY("찾을 수 없는 키토리입니다.")
+
+
+
+    ;
 
     private final String message;
 
