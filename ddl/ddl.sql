@@ -1,3 +1,9 @@
+DROP TABLE IF EXISTS custom_attributes;
+DROP TABLE IF EXISTS keytory;
+DROP TABLE IF EXISTS switches;
+DROP TABLE IF EXISTS company;
+DROP TABLE IF EXISTS switch_type;
+
 CREATE TABLE company (
                          company_id BIGINT AUTO_INCREMENT PRIMARY KEY,
                          name VARCHAR(25) UNIQUE
